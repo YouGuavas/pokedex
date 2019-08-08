@@ -1,18 +1,28 @@
-body {
+.container-fluid {
   background-color: darkblue;
   color: black;
+  height: 100vh;
+  padding-top: 15px;
 }
 .card, .input-group {
   margin: 0 auto;
+}
+.input-group {
+  justify-content: center;
 }
 .card {
   border: 3px solid gold;
   background-color: lightgray;
   padding: 3px 12px;
 }
+.card-body {
+  font-size: 12px;
+}
 .bio {
   font-size: 9px;
   font-style: italic;
+  background-color: gold;
+  padding: 2px;
 }
 .holographic {
   border: 3px solid gold;
