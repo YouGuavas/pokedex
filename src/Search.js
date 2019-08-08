@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {getPokemon} from './utils/api';
 import Card from './Card';
-import Footer from './Footer';
 
 export default class Search extends Component {
   constructor(props) {
     super(props);
-    this.state = {res: {}};
+    this.state = {
+      res: {},
+    };
   }
   getPokemonData = (pokemon) => {
     getPokemon(pokemon).then(res => this.setState({res}))
@@ -20,15 +21,14 @@ export default class Search extends Component {
   }
   render() {
     return(
-      <div className="container-fluid full-page">
+      <div>
         <div className='row'>
-          <div className="input-group mb-3">
+          <div className="input-group mb-3 center-row">
             <input type='text' id='search-bar'/>
             <input type='submit' onClick={this.handleClick}/>
           </div>
         </div>
         <Card data={this.state.res}/>
-        <Footer />
       </div>
     )
   }
