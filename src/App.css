@@ -10,8 +10,10 @@ html {
 .card, .input-group {
   margin: 0 auto;
 }
-.input-group {
+.center-row {
   justify-content: center;
+  text-align: center;
+  color: white;
 }
 .card {
   border: 3px solid gold;
@@ -39,10 +41,6 @@ html {
   position: absolute;
   bottom: 0;
   width: 100vw;
-}
-.page-footer .container-fluid .row {
-  justify-content: center;
-  text-align: center;
 }
 .row a {
   margin-left: 3px;
