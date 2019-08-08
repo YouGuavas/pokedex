@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {getPokemon} from './utils/api';
+import Card from './Card';
 
 export default class Search extends Component {
   constructor(props) {
@@ -17,19 +18,16 @@ export default class Search extends Component {
     this.getPokemonData('charizard');
   }
   render() {
-    console.log(this.state);
-    const checker = this.state.res;
     return(
-      <section>
-        <div>
-          <input type='text' id='search-bar'/>
-          <input type='submit' onClick={this.handleClick}/>
+      <div className="container">
+        <div className='row'>
+          <div className="input-group mb-3">
+            <input type='text' id='search-bar'/>
+            <input type='submit' onClick={this.handleClick}/>
+          </div>
         </div>
-        <div className='poke-info'>
-          {checker.sprites ? <img src={checker.sprites.front_default} /> : null}
-          {checker.id ? <span>{checker.id}</span> : null}
-        </div>
-      </section>
+        <Card data={this.state.res}/>
+      </div>
     )
   }
 }
