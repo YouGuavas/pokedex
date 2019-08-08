@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      instructions: ['Search a Pokemon using the search bar', 'Click or tap on the picture to alternate between shiny and default versions']
+      instructions: ['Search a PokéMon using the search bar', 'Click or tap on the picture to alternate between shiny and default versions']
     };
   }
   render() {
