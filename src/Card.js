@@ -14,17 +14,34 @@ export default class Card extends Component {
     const rInches = inches % 12;
     return {feet, rInches}
   }
+  handleImageFlip = (e) => {
+    const images = this.props.data.sprites;
+    const src = e.target.src;
+    if (src === images.front_default || src === images.front_shiny) {
+      e.target.src === images.front_default ? e.target.src = images.back_default : e.target.src = images.back_shiny;
+    } else {
+      e.target.src === images.back_default ? e.target.src = images.front_default : e.target.src = images.front_shiny;
+    }
+  }
+  handleShiny = (e) => {
+    const images = this.props.data.sprites;
+    const src = e.target.src;
+    if (src === images.front_default || src === images.back_default) {
+      e.target.src === images.front_default ? e.target.src = images.front_shiny : e.target.src = images.back_shiny;
+    } else {
+      e.target.src === images.front_shiny ? e.target.src = images.front_default : e.target.src = images.back_default;
+    }
+  }
   render() {
     const checker = this.props.data;
     console.log(checker);
     let name = checker.name
     const height = this.height(checker.height);
-    
     return(
       <div className='row'>
           <div className='card'>
             {name ? <h5 className='card-title'>{this.capitalize(name)}</h5> : null}
-            {checker.sprites ? <img alt={`Sprite depicting the Pokemon ${this.capitalize(name)}`} src={checker.sprites.front_default} className='col-sm holographic'/> : null}
+            {checker.sprites ? <img onClick={e => this.handleShiny(e)} onMouseOut={e => this.handleImageFlip(e)} onMouseOver={e => this.handleImageFlip(e)} alt={`Sprite depicting the Pokemon ${this.capitalize(name)}`} src={checker.sprites.front_default} className='col-sm holographic'/> : null}
             {checker.weight ? <span className='bio'>{`Length: ${height.feet}'${height.rInches}", Weight: ${this.weight(checker.weight)}`} lbs</span> : null}
             <div className='card-body container'>
               {checker.id ? <span className='row'>ID - {checker.id}</span> : null}
