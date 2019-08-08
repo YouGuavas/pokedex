@@ -5,6 +5,7 @@ export {getPokemon};
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
 function getPokemon(pokemon) {
+  pokemon = pokemon.toLowerCase();
   const url = `${BASE_URL}/pokemon/${pokemon}`;
   return axios.get(url)
     .then(res => {
