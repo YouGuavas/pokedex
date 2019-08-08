@@ -1,4 +1,7 @@
-.container-fluid {
+html {
+  background-color: darkblue;
+}
+.full-page {
   background-color: darkblue;
   color: black;
   height: 100vh;
@@ -28,4 +31,26 @@
   border: 3px solid gold;
   border-radius: 3px;
   background-image: url('./images/holo.png');
+}
+.page-footer {
+  border-top: 1px solid white;
+  background-color: darkblue;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+}
+.page-footer .container-fluid .row {
+  justify-content: center;
+  text-align: center;
+}
+.row a {
+  margin-left: 3px;
+}
+a {
+  color: yellow;
+  font-weight: bold;
+}
+a:hover {
+  color: yellow;
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {getPokemon} from './utils/api';
 import Card from './Card';
+import Footer from './Footer';
 
 export default class Search extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export default class Search extends Component {
   }
   render() {
     return(
-      <div className="container-fluid">
+      <div className="container-fluid full-page">
         <div className='row'>
           <div className="input-group mb-3">
             <input type='text' id='search-bar'/>
@@ -27,6 +28,7 @@ export default class Search extends Component {
           </div>
         </div>
         <Card data={this.state.res}/>
+        <Footer />
       </div>
     )
   }
