@@ -1,7 +1,15 @@
 body {
   background-color: darkblue;
-  color: white;
+  color: black;
 }
-.poke-info {
-  border: 1px solid white;
+.card, .input-group {
+  margin: 0 auto;
+}
+.card {
+  border: 3px solid gold;
+  background-color: gray;
+  padding: 3px;
+}
+.card-body {
+  background-color: gray;
 }
