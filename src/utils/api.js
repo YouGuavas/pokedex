@@ -10,5 +10,9 @@ function getPokemon(pokemon) {
     .then(res => {
       const pData = res.data;
       return pData
-    });
+    })
+    .catch(err => {
+      alert('Error. Please provide a valid Pokemon name.');
+      return axios.get(`${BASE_URL}`);
+    })
 }
