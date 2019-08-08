@@ -7,9 +7,15 @@ body {
 }
 .card {
   border: 3px solid gold;
-  background-color: gray;
-  padding: 3px;
+  background-color: lightgray;
+  padding: 3px 12px;
 }
-.card-body {
-  background-color: gray;
+.bio {
+  font-size: 9px;
+  font-style: italic;
+}
+.holographic {
+  border: 3px solid gold;
+  border-radius: 3px;
+  background-image: url('./images/holo.png');
 }
