@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 export default class Footer extends Component {
   render() {
     return(
-      <footer className='page-footer row'>
+      <footer className='page-footer'>
         <div className='container-fluid'>
           <div className='row center-row'>
             Made with <a href='https://reactjs.org/'>React</a>, <a href='https://getbootstrap.com/'>Bootstrap</a>, and <a href='https://pokeapi.co/'>PokéAPI</a>

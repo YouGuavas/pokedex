@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {getPokemon} from './utils/api';
 import Card from './Card';
 
-export default class Search extends Component {
+export default class PokeSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +28,9 @@ export default class Search extends Component {
             <input type='submit' onClick={this.handleClick}/>
           </div>
         </div>
+        <div className='container'>
         <Card data={this.state.res}/>
+        </div>
       </div>
     )
   }

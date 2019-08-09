@@ -6,12 +6,19 @@ export default class Card extends Component {
   }
   weight = (kg) => {
     return Math.ceil((kg/10) * 2.205);
+    //weight measurements are weirdly returned by PokeAPI as kg * 10
+    //Approximate kg - lb conversion is kg * 2.205
   }
   height = (m) => {
     const inches = Math.ceil((m*10) / 2.54);
-    //cm to inches = cm * 2.54
+    /*
+    height measurements are weirdly returned by PokeAPI as meters * 10
+    we multiply that by an additional 10 to get centimeters
+    cm to inches = cm * 2.54
+    */
     const feet = Math.floor(inches / 12);
     const rInches = inches % 12;
+    //remaining inches after feet have been calculated
     return {feet, rInches}
   }
   
@@ -26,7 +33,6 @@ export default class Card extends Component {
   }
   render() {
     const checker = this.props.data;
-    console.log(checker);
     let name = checker.name
     const height = this.height(checker.height);
     return(

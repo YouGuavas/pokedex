@@ -1,11 +1,18 @@
 html {
   background-color: darkblue;
+  justify-content: center;
+
+}
+.container-fluid {
+  padding-right: 0px;
 }
 .full-page {
   background-color: darkblue;
   color: black;
   height: 100vh;
-  padding-top: 15px;
+  width: 100%;
+  padding: 15px 0;
+  position: relative;
 }
 .card, .input-group {
   margin: 0 auto;
@@ -40,7 +47,7 @@ html {
   color: white;
   position: absolute;
   bottom: 0;
-  width: 100vw;
+  width: 100%;
 }
 .row a {
   margin-left: 3px;
@@ -51,4 +58,7 @@ a {
 }
 a:hover {
   color: yellow;
+}
+.row {
+  margin: 0;
 }

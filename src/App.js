@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
-import Search from './Search';
+import PokeSearch from './Search';
 import Footer from './Footer';
 import HowTo from './HowTo';
-import {tsConstructorType } from '@babel/types';
 
 
 class App extends React.Component {
@@ -17,7 +16,7 @@ class App extends React.Component {
     return (
     <div className="App">
       <div className='container-fluid full-page'>
-        <Search />
+        <PokeSearch />
         <HowTo instructions={this.state.instructions}/>
         <Footer />
       </div>
