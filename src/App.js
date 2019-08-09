@@ -4,6 +4,7 @@ import PokeSearch from './Search';
 import Footer from './Footer';
 import HowTo from './HowTo';
 import Nav from './Nav';
+import Types from './Types';
 
 
 class App extends React.Component {
@@ -29,7 +30,7 @@ class App extends React.Component {
     <div className="App">
       <div className='container-fluid full-page'>
         <Nav title='PokéDex' links={['PokéMon', 'Locations']} handleClick={(f) => {this.handleClick(f)}}/>
-        {selection === 'pokemon' ? <PokeSearch /> : null}
+        {selection === 'pokemon' ? <PokeSearch /> : <Types />}
         <HowTo instructions={this.state.instructions[selection]}/>
         <Footer />
       </div>
