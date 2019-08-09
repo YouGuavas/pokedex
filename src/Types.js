@@ -2,10 +2,10 @@ import React from 'react';
 import {getType} from './utils/api';
 
 export default class Types extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      type: 'fighting',
+      type: props.type,
       res: {},
       basics: {
         double_damage_from: "Receives double damage from: ",
@@ -35,7 +35,6 @@ export default class Types extends React.Component {
     this.getTypeData(this.state.type);
   }
   render() {
-    console.log(this.state);
     const checker = this.state.res.damage_relations;
     return(
       <div>
