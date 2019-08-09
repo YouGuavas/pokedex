@@ -77,3 +77,10 @@ a:hover {
   text-decoration: underline;
   cursor: pointer;
 }
+.poke-span {
+  margin-left: 4px;
+  font-weight: bold;
+}
+.poke-row {
+  overflow: scroll;
+}

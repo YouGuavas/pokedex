@@ -15,7 +15,8 @@ class App extends React.Component {
       instructions: {
         'pokemon': ['Search a PokéMon using the search bar', 'Click or tap on the picture to alternate between shiny and default versions'],
         'types': []
-      }
+      },
+      pokemon: 'charizard'
     };
   }
   handleClick = (f) => {
@@ -24,13 +25,19 @@ class App extends React.Component {
       'selection': f
     });
   }
+  handlePokemon = (f) => {
+    this.setState({
+      selection: 'pokemon',
+      pokemon: f.pokemon.name
+    })
+  }
   render() {
     const selection = this.state.selection;
     return (
     <div className="App">
       <div className='container-fluid full-page'>
         <Nav title='PokéDex' links={['PokéMon', 'Types']} handleClick={(f) => {this.handleClick(f)}}/>
-        {selection === 'pokemon' ? <PokeSearch /> : <Types />}
+        {selection === 'pokemon' ? <PokeSearch pokemon={this.state.pokemon} /> : <Types handlePokemon={this.handlePokemon}/>}
         <HowTo instructions={this.state.instructions[selection]}/>
         <Footer />
       </div>

@@ -7,6 +7,7 @@ export default class PokeSearch extends Component {
     super(props);
     this.state = {
       res: {},
+      pokemon: props.pokemon
     };
   }
   getPokemonData = (pokemon) => {
@@ -17,7 +18,7 @@ export default class PokeSearch extends Component {
     this.getPokemonData(pokemon);
   }
   componentWillMount() {
-    this.getPokemonData('charizard');
+    this.getPokemonData(this.state.pokemon);
   }
   render() {
     return(
