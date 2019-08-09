@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export {getPokemon, getRegion};
+export {getPokemon, getType};
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
@@ -18,16 +18,16 @@ function getPokemon(pokemon) {
     })
 }
 
-function getRegion(region) {
-  const url = `${BASE_URL}/region/${region}`;
+function getType(type) {
+  const url = `${BASE_URL}/type/${type}`;
   return axios.get(url)
     .then(res => {
-      const rData = res.data;
-      return rData;
+      const tData = res.data;
+      return tData;
     })
     .catch(err => {
       console.log(err);
-      alert('Error. Please provide a valid Region name.');
-      return axios.get(`${BASE_URL}/region/kanto`);
+      alert('Error. Please provide a valid Type name.');
+      return axios.get(`${BASE_URL}/type/electric`);
     })
 }

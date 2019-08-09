@@ -11,10 +11,10 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      selection: 'pokemon',
+      selection: 'types',
       instructions: {
         'pokemon': ['Search a PokéMon using the search bar', 'Click or tap on the picture to alternate between shiny and default versions'],
-        'locations': []
+        'types': []
       }
     };
   }
@@ -29,7 +29,7 @@ class App extends React.Component {
     return (
     <div className="App">
       <div className='container-fluid full-page'>
-        <Nav title='PokéDex' links={['PokéMon', 'Locations']} handleClick={(f) => {this.handleClick(f)}}/>
+        <Nav title='PokéDex' links={['PokéMon', 'Types']} handleClick={(f) => {this.handleClick(f)}}/>
         {selection === 'pokemon' ? <PokeSearch /> : <Types />}
         <HowTo instructions={this.state.instructions[selection]}/>
         <Footer />
