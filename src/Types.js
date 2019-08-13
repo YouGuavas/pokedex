@@ -28,8 +28,11 @@ export default class Types extends React.Component {
     this.getTypeData(type);
     this.setState({type});
   }
-  handlePokemon = (f) => {
-    this.props.handlePokemon(f);
+  handleType = (t) => {
+    this.props.handleType(t, () =>{
+      this.getTypeData(t.name);
+      this.setState({type: t.name})
+    });
   }
   componentWillMount() {
     this.getTypeData(this.state.type);
@@ -50,10 +53,10 @@ export default class Types extends React.Component {
             {
               checker ? (Object.keys(checker)
               .map((key, index) => {
-                if (checker[key].length > 0) {return <div className='row center-row' key={index}>{this.state.basics[key] + checker[key]
-              .map((item, index) => (<span>{this.capitalize(item.name)}</span>))}</div>} else return null}) ): null
+                if (checker[key].length > 0) {return <div className='row center-row' key={index}><span>{`${this.state.basics[key]}`}</span>{checker[key]
+                .map((item, index) => (<span id={index} onClick={() => this.handleType(item)} key={index} className='poke-span'>{this.capitalize(item.name)}</span>))}</div>} else return null}) ): null
               }
-              <div className='row center-row poke-row'>{checker ? this.state.res.pokemon.map((pokemon, index) => <span onClick={() => this.handlePokemon(pokemon)} key={index} className='poke-span col-sm-3'>{this.capitalize(pokemon.pokemon.name)}</span>): null}</div>
+              <div className='row center-row poke-row'>{checker ? this.state.res.pokemon.map((pokemon, index) => <span onClick={() => this.props.handlePokemon(pokemon)} key={index} className='poke-span col-sm-3'>{this.capitalize(pokemon.pokemon.name)}</span>): null}</div>
           </div>
         </div>
       </div>

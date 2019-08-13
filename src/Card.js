@@ -43,7 +43,7 @@ export default class Card extends Component {
             {checker.weight ? <span className='bio'>{`Length: ${height.feet}'${height.rInches}", Weight: ${this.weight(checker.weight)}`} lbs</span> : null}
             <div className='card-body container'>
               {checker.id ? <span className='row'>{`PokéDex ID - ${checker.id}`}</span> : null}
-              {checker.types ? <span className='row'>{(`Type(s) - ${checker.types.map(item => (this.capitalize(item.type.name)))}`).replace(/,/g, ', ')}</span> : null}
+              {checker.types ? <span className='row'><span>Type(s) - </span>{checker.types.map((item, index) => (<span onClick={() => this.props.handleType(item.type)} className='poke-span' key={index}>{this.capitalize(item.type.name)}</span>))}</span> : null}
             </div>
           </div>
         </div>

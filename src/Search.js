@@ -30,7 +30,7 @@ export default class PokeSearch extends Component {
           </div>
         </div>
         <div className='container'>
-        <Card data={this.state.res}/>
+        <Card data={this.state.res} handleType={this.props.handleType}/>
         </div>
       </div>
     )
