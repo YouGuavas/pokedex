@@ -48,7 +48,7 @@ export default class Types extends React.Component {
           </div>
         </div>
         <div className='row center-row'>
-          <div className='container-fluid'>
+          <div className='container-fluid types-container'>
             <div className='row center-row'>{`Type: ${this.capitalize(this.state.type)}`}</div>
             {
               checker ? (Object.keys(checker)
@@ -56,7 +56,7 @@ export default class Types extends React.Component {
                 if (checker[key].length > 0) {return <div className='row center-row' key={index}><span>{`${this.state.basics[key]}`}</span>{checker[key]
                 .map((item, index) => (<span id={index} onClick={() => this.handleType(item)} key={index} className='poke-span'>{this.capitalize(item.name)}</span>))}</div>} else return null}) ): null
               }
-              <div className='row center-row poke-row'>{checker ? this.state.res.pokemon.map((pokemon, index) => <span onClick={() => this.props.handlePokemon(pokemon)} key={index} className='poke-span col-sm-3'>{this.capitalize(pokemon.pokemon.name)}</span>): null}</div>
+              <div className='row center-row poke-row'>{checker ? this.state.res.pokemon.map((pokemon, index) => <span onClick={() => this.props.handlePokemon(pokemon)} key={index} className='poke-span col-md-3 col-sm-4'>{this.capitalize(pokemon.pokemon.name)}</span>): null}</div>
           </div>
         </div>
       </div>

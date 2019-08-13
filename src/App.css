@@ -80,7 +80,19 @@ a:hover {
 .poke-span {
   margin-left: 4px;
   font-weight: bold;
+  cursor: pointer;
 }
 .poke-row {
-  overflow: scroll;
+  height: 40vh;
+  overflow-y: scroll;
+  padding-top: 5px;
+  bottom: 0;
+}
+@media screen and (min-height: 400px) {
+    .poke-row {
+      height: 55vh;
+    }
+}
+.types-container {
+  position: relative;
 }
