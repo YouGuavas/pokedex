@@ -38,12 +38,12 @@ export default class Card extends Component {
     return(
       <div className='row'>
           <div className='card' id='card'>
-            {name ? <h5 className='card-title'>{this.capitalize(name)}</h5> : null}
-            {checker.sprites ? <img onClick={e => this.handleShiny(e)} alt={`Sprite depicting the PokéMon ${this.capitalize(name)}`} src={checker.sprites.front_default} className='col-sm holographic'/> : null}
-            {checker.weight ? <span className='bio'>{`Length: ${height.feet}'${height.rInches}", Weight: ${this.weight(checker.weight)}`} lbs</span> : null}
+            {name && <h5 className='card-title'>{this.capitalize(name)}</h5>}
+            {checker.sprites && <img onClick={e => this.handleShiny(e)} alt={`Sprite depicting the PokéMon ${this.capitalize(name)}`} src={checker.sprites.front_default} className='col-sm holographic'/>}
+            {checker.weight && <span className='bio'>{`Length: ${height.feet}'${height.rInches}", Weight: ${this.weight(checker.weight)}`} lbs</span>}
             <div className='card-body container'>
-              {checker.id ? <span className='row'>{`PokéDex ID - ${checker.id}`}</span> : null}
-              {checker.types ? <span className='row'><span>Type(s) - </span>{checker.types.map((item, index) => (<span onClick={() => this.props.handleType(item.type)} className='poke-span' key={index}>{this.capitalize(item.type.name)}</span>))}</span> : null}
+              {checker.id && <span className='row'>{`PokéDex ID - ${checker.id}`}</span>}
+              {checker.types && <span className='row'><span>Type(s) - </span>{checker.types.map((item, index) => (<span onClick={() => this.props.handleType(item.type)} className='poke-span' key={index}>{this.capitalize(item.type.name)}</span>))}</span>}
             </div>
           </div>
         </div>

@@ -85,7 +85,7 @@ a:hover {
 .poke-row {
   height: 40vh;
   overflow-y: scroll;
-  padding-top: 5px;
+  margin-top: 5px;
   bottom: 0;
 }
 @media screen and (min-height: 400px) {

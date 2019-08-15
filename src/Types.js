@@ -51,12 +51,12 @@ export default class Types extends React.Component {
           <div className='container-fluid types-container'>
             <div className='row center-row'>{`Type: ${this.capitalize(this.state.type)}`}</div>
             {
-              checker ? (Object.keys(checker)
+              checker && (Object.keys(checker)
               .map((key, index) => {
                 if (checker[key].length > 0) {return <div className='row center-row' key={index}><span>{`${this.state.basics[key]}`}</span>{checker[key]
-                .map((item, index) => (<span id={index} onClick={() => this.handleType(item)} key={index} className='poke-span'>{this.capitalize(item.name)}</span>))}</div>} else return null}) ): null
+                .map((item, index) => (<span id={index} onClick={() => this.handleType(item)} key={index} className='poke-span'>{this.capitalize(item.name)}</span>))}</div>} else return null}) )
               }
-              <div className='row center-row poke-row'>{checker ? this.state.res.pokemon.map((pokemon, index) => <span onClick={() => this.props.handlePokemon(pokemon)} key={index} className='poke-span col-md-3 col-sm-4'>{this.capitalize(pokemon.pokemon.name)}</span>): null}</div>
+              <div className='row center-row poke-row'>{checker && this.state.res.pokemon.map((pokemon, index) => <span onClick={() => this.props.handlePokemon(pokemon)} key={index} className='poke-span col-md-3 col-sm-4'>{this.capitalize(pokemon.pokemon.name)}</span>)}</div>
           </div>
         </div>
       </div>
