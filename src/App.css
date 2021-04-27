@@ -40,6 +40,7 @@ html {
   border: 3px solid gold;
   border-radius: 3px;
   background-image: url('./images/holo.png');
+  background-size: cover;
 }
 .holographic:hover {
   cursor: pointer;
