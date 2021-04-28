@@ -1,33 +1,42 @@
-import axios from 'axios';
-
 export {getPokemon, getType};
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
 function getPokemon(pokemon) {
+  if (!pokemon) return;
   pokemon = pokemon.toLowerCase();
   const url = `${BASE_URL}/pokemon/${pokemon}`;
-  return axios.get(url)
-    .then(res => {
-      const pData = res.data;
-      return pData
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      return data;
     })
     .catch(err => {
+      console.error(err);
       alert('Error. Please provide a valid Pokemon name.');
-      return axios.get(`${BASE_URL}/pokemon/charizard`);
+      return fetch(`${BASE_URL}/pokemon/charizard`)
+        .then(response => response.json())
+        .then(data => {
+          return data;
+        })
     })
 }
 
 function getType(type) {
+  if (!type) return;
   const url = `${BASE_URL}/type/${type}`;
-  return axios.get(url)
-    .then(res => {
-      const tData = res.data;
-      return tData;
+  return fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      return data;
     })
     .catch(err => {
-      console.log(err);
+      console.error(err);
       alert('Error. Please provide a valid Type name.');
-      return axios.get(`${BASE_URL}/type/electric`);
+      return fetch(`${BASE_URL}/type/electric`)
+        .then(response => response.json())
+        .then(data => {
+          return data;
+        })
     })
 }
