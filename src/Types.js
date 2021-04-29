@@ -1,5 +1,5 @@
 import React from 'react';
-import {getType} from './utils/api';
+import {search} from './utils/api';
 
 export default class Types extends React.Component {
   constructor(props) {
@@ -17,25 +17,25 @@ export default class Types extends React.Component {
       }
     };
   }
-  getTypeData = (type) => {
-    getType(type).then(res => this.setState({res}))
+  handleType = (type) => {
+    if (!type) return;
+    if (typeof(type) !== 'string') type = type.name;
+    search(type)
+      .then((result) => {
+        if (!result) return
+        this.setState({res: result.data, type})
+      })
   }
   capitalize = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
   handleClick = () => {
     const type = document.getElementById('search-bar').value;
-    this.getTypeData(type);
+    this.handleType(type);
     this.setState({type});
   }
-  handleType = (t) => {
-    this.props.handleType(t, () =>{
-      this.getTypeData(t.name);
-      this.setState({type: t.name})
-    });
-  }
   componentWillMount() {
-    this.getTypeData(this.state.type);
+    this.handleType(this.state.type);
   }
   render() {
     const checker = this.state.res.damage_relations;
@@ -56,7 +56,7 @@ export default class Types extends React.Component {
                 if (checker[key].length > 0) {return <div className='row center-row' key={index}><span>{`${this.state.basics[key]}`}</span>{checker[key]
                 .map((item, index) => (<span id={index} onClick={() => this.handleType(item)} key={index} className='poke-span'>{this.capitalize(item.name)}</span>))}</div>} else return null}) )
               }
-              <div className='row center-row poke-row'>{checker && this.state.res.pokemon.map((pokemon, index) => <span onClick={() => this.props.handlePokemon(pokemon)} key={index} className='poke-span col-md-3 col-sm-4'>{this.capitalize(pokemon.pokemon.name)}</span>)}</div>
+              <div className='row center-row poke-row'>{checker && this.state.res.pokemon.map((pokemon, index) => <span onClick={() => this.props.handleSearch(pokemon)} key={index} className='poke-span col-md-3 col-sm-4'>{this.capitalize(pokemon.pokemon.name)}</span>)}</div>
           </div>
         </div>
       </div>

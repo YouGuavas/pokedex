@@ -1,42 +1,40 @@
-export {getPokemon, getType};
+export {search};
 
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
-function getPokemon(pokemon) {
-  if (!pokemon) return;
-  pokemon = pokemon.toLowerCase();
-  const url = `${BASE_URL}/pokemon/${pokemon}`;
-  return fetch(url)
+function search(searchTerm, searchType='pokemon') {
+  if (!searchTerm) return;
+  let types;
+  return fetch(`${BASE_URL}/type`)
     .then(response => response.json())
     .then(data => {
-      return data;
+      data = data.results.map((item) => {
+        return item.name;
+      });
+      types = data;
+      return data
     })
-    .catch(err => {
-      console.error(err);
-      alert('Error. Please provide a valid Pokemon name.');
-      return fetch(`${BASE_URL}/pokemon/charizard`)
+    .then(() => {
+      if (types.includes(searchTerm)) {
+        searchType = 'type';
+      } else {
+        searchType = 'pokemon';
+        searchTerm = searchTerm.toLowerCase();
+      }
+      const url = `${BASE_URL}/${searchType}/${searchTerm}`;
+      return fetch(url)
         .then(response => response.json())
         .then(data => {
-          return data;
+          return {data, searchType};
         })
-    })
-}
-
-function getType(type) {
-  if (!type) return;
-  const url = `${BASE_URL}/type/${type}`;
-  return fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      return data;
-    })
-    .catch(err => {
-      console.error(err);
-      alert('Error. Please provide a valid Type name.');
-      return fetch(`${BASE_URL}/type/electric`)
-        .then(response => response.json())
-        .then(data => {
-          return data;
+        .catch(err => {
+          console.error(err);
+          alert('Error. Please provide a valid Pokemon name.');
+          return fetch(`${BASE_URL}/pokemon/charizard`)
+            .then(response => response.json())
+            .then(data => {
+              return data;
+            })
         })
-    })
+      })
 }
