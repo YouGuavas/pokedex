@@ -33,7 +33,7 @@ export default class Nav extends React.Component {
     }, cb())
   }
   handleSearch = (searchTerm='charizard') => {
-    if (!searchTerm) searchTerm = document.getElementById('search-bar').value;
+    if (searchTerm !== 'charizard') searchTerm = document.getElementById('search-bar').value;
     if (typeof(searchTerm) !== 'string') searchTerm = searchTerm.pokemon.name;
     search(searchTerm)
       .then((result) => {
