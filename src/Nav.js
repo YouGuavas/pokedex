@@ -50,9 +50,6 @@ export default class Nav extends React.Component {
     return(
       <div>
         <div className='row'>
-          <ul className='nav flex-column'>
-            {this.props.links.map((item, index) => (<li onClick={() => this.handleClick(item)} className='nav-item' key={index}>{item}</li>))}
-          </ul>
         </div>
         {selection === 'pokemon' ? (<div> 
           <PokeSearch pokemon={this.state.pokemon} handleSearch={this.handleSearch} handleType={this.handleType} />
